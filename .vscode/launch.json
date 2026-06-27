@@ -1,0 +1,56 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Build + Flash + Debug Blue Pill",
+      "type": "cortex-debug",
+      "request": "launch",
+      "servertype": "external",
+      "gdbTarget": "localhost:3333",
+      "cwd": "${workspaceFolder}",
+      "executable": "${workspaceFolder}/build/bluepill.elf",
+      "device": "STM32F103C6",
+      "armToolchainPath": "${workspaceFolder}/tools/docker-toolchain",
+      "gdbPath": "${workspaceFolder}/tools/docker-toolchain/arm-none-eabi-gdb",
+      "objdumpPath": "${workspaceFolder}/tools/docker-toolchain/arm-none-eabi-objdump",
+      "toolchainPrefix": "arm-none-eabi",
+      "overrideGDBServerStartedRegex": "Listening on port [0-9]+ for gdb connections",
+      "runToEntryPoint": "main",
+      "preLaunchTask": "Build + Start OpenOCD GDB Server (Docker)",
+      "preLaunchCommands": [
+        "set substitute-path /workspace ${workspaceFolder}"
+      ],
+      "overrideLaunchCommands": [
+        "monitor reset halt",
+        "load",
+        "monitor reset halt",
+        "tbreak main",
+        "continue"
+      ],
+      "showDevDebugOutput": "raw",
+      "postDebugCommands": [
+        "monitor halt"
+      ],
+      "postDebugTask": "Stop OpenOCD GDB Server (Docker)"
+    },
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "cppdbg",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": false,
+      "externalConsole": false,
+      "cwd": "/home/philip/stm_project/bluepill/Core/Src",
+      "program": "/home/philip/stm_project/bluepill/Core/Src/build/Debug/outDebug",
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    }
+  ]
+}

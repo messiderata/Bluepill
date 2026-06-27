@@ -1,0 +1,79 @@
+ARM GAS  /tmp/ccfIQiy2.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 1
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"main.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.main,"ax",%progbits
+  16              		.align	1
+  17              		.global	main
+  18              		.arch armv7-m
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu softvfp
+  24              	main:
+  25              	.LFB0:
+  26              		.file 1 "Core/Src/main.c"
+   1:Core/Src/main.c **** #include <stdint.h>
+   2:Core/Src/main.c **** 
+   3:Core/Src/main.c **** int main(void)
+   4:Core/Src/main.c **** {
+  27              		.loc 1 4 1 view -0
+  28              		.cfi_startproc
+  29              		@ Volatile: function does not return.
+  30              		@ args = 0, pretend = 0, frame = 8
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  33 0000 82B0     		sub	sp, sp, #8
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+   5:Core/Src/main.c ****   volatile uint32_t test = 5U;
+  36              		.loc 1 5 3 view .LVU1
+  37              		.loc 1 5 21 is_stmt 0 view .LVU2
+  38 0002 0523     		movs	r3, #5
+  39 0004 0193     		str	r3, [sp, #4]
+  40              	.L2:
+   6:Core/Src/main.c **** 
+   7:Core/Src/main.c ****   while (1)
+  41              		.loc 1 7 3 is_stmt 1 discriminator 1 view .LVU3
+   8:Core/Src/main.c ****   {
+   9:Core/Src/main.c ****     test = test + test;
+  42              		.loc 1 9 5 discriminator 1 view .LVU4
+  43              		.loc 1 9 17 is_stmt 0 discriminator 1 view .LVU5
+  44 0006 019B     		ldr	r3, [sp, #4]
+  45 0008 019A     		ldr	r2, [sp, #4]
+  46 000a 1344     		add	r3, r3, r2
+  47              		.loc 1 9 10 discriminator 1 view .LVU6
+  48 000c 0193     		str	r3, [sp, #4]
+   7:Core/Src/main.c ****   {
+ARM GAS  /tmp/ccfIQiy2.s 			page 2
+
+
+  49              		.loc 1 7 9 is_stmt 1 discriminator 1 view .LVU7
+  50 000e FAE7     		b	.L2
+  51              		.cfi_endproc
+  52              	.LFE0:
+  54              		.text
+  55              	.Letext0:
+  56              		.file 2 "/usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h"
+ARM GAS  /tmp/ccfIQiy2.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 main.c
+     /tmp/ccfIQiy2.s:16     .text.main:0000000000000000 $t
+     /tmp/ccfIQiy2.s:24     .text.main:0000000000000000 main
+
+NO UNDEFINED SYMBOLS
