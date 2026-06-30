@@ -98,7 +98,8 @@ AS_INCLUDES =
 
 # C includes
 C_INCLUDES =  \
--ICore/Inc 
+-ICore/Inc \
+-IDrivers/Inc
 
 
 # compile gcc flags

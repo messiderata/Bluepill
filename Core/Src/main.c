@@ -1,11 +1,27 @@
 #include <stdint.h>
+#include "stm32f1xx.h"
+
+
+void HardFault_Handler();
 
 int main(void)
 {
-  volatile uint32_t test = 5U;
+
+  GPIOC_PCLOCK_EN();
+  
 
   while (1)
   {
-    test = test + test;
+
   }
+}
+
+
+void HardFault_Handler(){
+
+
+  int test =0;
+
+  test |= test;
+
 }

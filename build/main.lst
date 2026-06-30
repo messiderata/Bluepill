@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccfIQiy2.s 			page 1
+ARM GAS  /tmp/ccJTej0P.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -27,53 +27,92 @@ ARM GAS  /tmp/ccfIQiy2.s 			page 1
   25              	.LFB0:
   26              		.file 1 "Core/Src/main.c"
    1:Core/Src/main.c **** #include <stdint.h>
-   2:Core/Src/main.c **** 
-   3:Core/Src/main.c **** int main(void)
-   4:Core/Src/main.c **** {
-  27              		.loc 1 4 1 view -0
+   2:Core/Src/main.c **** #include "stm32f1xx.h"
+   3:Core/Src/main.c **** 
+   4:Core/Src/main.c **** 
+   5:Core/Src/main.c **** void HardFault_Handler();
+   6:Core/Src/main.c **** 
+   7:Core/Src/main.c **** int main(void)
+   8:Core/Src/main.c **** {
+  27              		.loc 1 8 1 view -0
   28              		.cfi_startproc
   29              		@ Volatile: function does not return.
-  30              		@ args = 0, pretend = 0, frame = 8
+  30              		@ args = 0, pretend = 0, frame = 0
   31              		@ frame_needed = 0, uses_anonymous_args = 0
   32              		@ link register save eliminated.
-  33 0000 82B0     		sub	sp, sp, #8
-  34              	.LCFI0:
-  35              		.cfi_def_cfa_offset 8
-   5:Core/Src/main.c ****   volatile uint32_t test = 5U;
-  36              		.loc 1 5 3 view .LVU1
-  37              		.loc 1 5 21 is_stmt 0 view .LVU2
-  38 0002 0523     		movs	r3, #5
-  39 0004 0193     		str	r3, [sp, #4]
-  40              	.L2:
-   6:Core/Src/main.c **** 
-   7:Core/Src/main.c ****   while (1)
-  41              		.loc 1 7 3 is_stmt 1 discriminator 1 view .LVU3
-   8:Core/Src/main.c ****   {
-   9:Core/Src/main.c ****     test = test + test;
-  42              		.loc 1 9 5 discriminator 1 view .LVU4
-  43              		.loc 1 9 17 is_stmt 0 discriminator 1 view .LVU5
-  44 0006 019B     		ldr	r3, [sp, #4]
-  45 0008 019A     		ldr	r2, [sp, #4]
-  46 000a 1344     		add	r3, r3, r2
-  47              		.loc 1 9 10 discriminator 1 view .LVU6
-  48 000c 0193     		str	r3, [sp, #4]
-   7:Core/Src/main.c ****   {
-ARM GAS  /tmp/ccfIQiy2.s 			page 2
+   9:Core/Src/main.c **** 
+  10:Core/Src/main.c ****   GPIOC_PCLOCK_EN();
+  33              		.loc 1 10 3 view .LVU1
+  34 0000 024A     		ldr	r2, .L3
+  35 0002 9369     		ldr	r3, [r2, #24]
+  36 0004 43F01003 		orr	r3, r3, #16
+  37 0008 9361     		str	r3, [r2, #24]
+  38              	.L2:
+  11:Core/Src/main.c ****   
+  12:Core/Src/main.c **** 
+  13:Core/Src/main.c ****   while (1)
+  39              		.loc 1 13 3 discriminator 1 view .LVU2
+  14:Core/Src/main.c ****   {
+  15:Core/Src/main.c **** 
+  16:Core/Src/main.c ****   }
+  40              		.loc 1 16 3 discriminator 1 view .LVU3
+  13:Core/Src/main.c ****   {
+  41              		.loc 1 13 9 discriminator 1 view .LVU4
+ARM GAS  /tmp/ccJTej0P.s 			page 2
 
 
-  49              		.loc 1 7 9 is_stmt 1 discriminator 1 view .LVU7
-  50 000e FAE7     		b	.L2
-  51              		.cfi_endproc
-  52              	.LFE0:
-  54              		.text
-  55              	.Letext0:
-  56              		.file 2 "/usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h"
-ARM GAS  /tmp/ccfIQiy2.s 			page 3
+  42 000a FEE7     		b	.L2
+  43              	.L4:
+  44              		.align	2
+  45              	.L3:
+  46 000c 00100240 		.word	1073876992
+  47              		.cfi_endproc
+  48              	.LFE0:
+  50              		.section	.text.HardFault_Handler,"ax",%progbits
+  51              		.align	1
+  52              		.global	HardFault_Handler
+  53              		.syntax unified
+  54              		.thumb
+  55              		.thumb_func
+  56              		.fpu softvfp
+  58              	HardFault_Handler:
+  59              	.LFB1:
+  17:Core/Src/main.c **** }
+  18:Core/Src/main.c **** 
+  19:Core/Src/main.c **** 
+  20:Core/Src/main.c **** void HardFault_Handler(){
+  60              		.loc 1 20 25 view -0
+  61              		.cfi_startproc
+  62              		@ args = 0, pretend = 0, frame = 0
+  63              		@ frame_needed = 0, uses_anonymous_args = 0
+  64              		@ link register save eliminated.
+  21:Core/Src/main.c **** 
+  22:Core/Src/main.c **** 
+  23:Core/Src/main.c ****   int test =0;
+  65              		.loc 1 23 3 view .LVU6
+  66              	.LVL0:
+  24:Core/Src/main.c **** 
+  25:Core/Src/main.c ****   test |= test;
+  67              		.loc 1 25 3 view .LVU7
+  26:Core/Src/main.c **** 
+  27:Core/Src/main.c **** }...
+  68              		.loc 1 27 1 is_stmt 0 view .LVU8
+  69 0000 7047     		bx	lr
+  70              		.cfi_endproc
+  71              	.LFE1:
+  73              		.text
+  74              	.Letext0:
+  75              		.file 2 "Drivers/Inc/stm32f1xx.h"
+  76              		.file 3 "/usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h"
+ARM GAS  /tmp/ccJTej0P.s 			page 3
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 main.c
-     /tmp/ccfIQiy2.s:16     .text.main:0000000000000000 $t
-     /tmp/ccfIQiy2.s:24     .text.main:0000000000000000 main
+     /tmp/ccJTej0P.s:16     .text.main:0000000000000000 $t
+     /tmp/ccJTej0P.s:24     .text.main:0000000000000000 main
+     /tmp/ccJTej0P.s:46     .text.main:000000000000000c $d
+     /tmp/ccJTej0P.s:51     .text.HardFault_Handler:0000000000000000 $t
+     /tmp/ccJTej0P.s:58     .text.HardFault_Handler:0000000000000000 HardFault_Handler
 
 NO UNDEFINED SYMBOLS
